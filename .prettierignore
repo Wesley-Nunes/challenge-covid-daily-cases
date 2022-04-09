@@ -1,0 +1,10 @@
+node_modules
+.next
+.github
+.gitignore
+.prettierignore
+.eslintrc.json
+tsconfig.json
+next.config.js
+package.json
+README.md

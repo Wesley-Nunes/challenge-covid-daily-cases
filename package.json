@@ -1,0 +1,29 @@
+{
+  "name": "challenge-covid-daily-cases",
+  "description": "Aplicação web para consumir API com o histórico de casos de Covid",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Wesley-Nunes/challenge-covid-daily-cases.git",
+  "author": "Wesley-Nunes <wesnmonteiro@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^12.1.4",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "@types/react": "^18.0.0",
+    "eslint": "^8.13.0",
+    "eslint-config-next": "^12.1.4",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.18.0"
+  }
+}
