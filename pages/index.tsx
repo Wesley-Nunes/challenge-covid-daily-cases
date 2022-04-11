@@ -1,29 +1,14 @@
 import React from 'react'
-import { GetStaticProps } from 'next'
+import { NextPage } from 'next'
+import dynamic from 'next/dynamic'
 
-import supabaseClient from '../lib/supabaseClient'
+const WorldMap = dynamic(import('../components/WorldMap/WorldMap'), {
+  ssr: false
+})
 
-export const getStaticProps: GetStaticProps = async () => {
-  let { data: covid_daily_cases, error } = await supabaseClient
-    .from('covid_daily_cases')
-    .select('*')
-    .range(0, 9)
-
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  return {
-    props: {
-      covid_daily_cases
-    }
-  }
-}
-
-const Home = ({ covid_daily_cases }): JSX.Element => (
+const Home: NextPage = () => (
   <>
-    <h1>Covid Cases!</h1>
-    <p>{JSON.stringify(covid_daily_cases)}</p>
+    <WorldMap />
   </>
 )
 
