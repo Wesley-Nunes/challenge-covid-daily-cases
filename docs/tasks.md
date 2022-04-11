@@ -3,7 +3,7 @@
 Tarefas necessárias para o projeto ser considerado concluído,  
 em ordem a ser desenvolvido:
 
-- [ ] API Request;
+- [x] API Request;
 - [ ] Desenvolver a versão estática do Mapa;
 - [ ] Deploy no Vercel;
 - [ ] Tratar os dados da API;
