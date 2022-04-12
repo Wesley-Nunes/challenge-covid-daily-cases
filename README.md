@@ -61,7 +61,7 @@ O Site estará disponível em: http://localhost:3000/
 
 ## <a name="preview"></a>Preview
 
-The project is available on [Covid Daily Cases](https://challenge-covid-daily-cases-mauve.vercel.app/)
+The project is available on [Covid Daily Cases](https://covid-daily-cases-onyx.vercel.app/)
 
 ## <a name="licenca"></a>Licença
 
