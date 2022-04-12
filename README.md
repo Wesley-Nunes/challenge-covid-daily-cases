@@ -13,6 +13,7 @@ Aplicação web para consumir API com o histórico de casos de Covid
 - [Status](#status)
 - [Abordagem](#abordagem)
 - [Instalação & Utilização](#instalacao-e-utilizacao)
+- [Preview](#preview)
 - [Licença](#licenca)
 - [Autor](#autor)
 
@@ -57,6 +58,10 @@ No terminal digite: `yarn dev`
 O Site estará disponível em: http://localhost:3000/
 
 ### Entendendo o Projeto
+
+## <a name="preview"></a>Preview
+
+The project is available on [Covid Daily Cases](https://challenge-covid-daily-cases-mauve.vercel.app/)
 
 ## <a name="licenca"></a>Licença
 
