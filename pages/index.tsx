@@ -1,15 +1,21 @@
 import React from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import dynamic from 'next/dynamic'
+import { Container } from '@mui/material'
 
-import supabaseClient from '../lib/supabaseClient'
-import ApiData from '../lib/ApiData'
-
-const WorldMap = dynamic(import('../components/WorldMap/WorldMap'), {
+import supabaseClient from '../src/lib/supabaseClient'
+import ApiData from '../src/lib/ApiData'
+import DateSlider from '../src/components/DateSlider/DateSlider'
+const WorldMap = dynamic(import('../src/components/WorldMap/WorldMap'), {
   ssr: false
 })
 
-const Home: NextPage = props => <WorldMap covidData={props['covidData']} />
+const Home: NextPage = props => (
+  <Container>
+    <DateSlider />
+    <WorldMap covidData={props['covidData']} />
+  </Container>
+)
 
 export const getStaticProps: GetStaticProps = async () => {
   const date = '2021-03-22'
