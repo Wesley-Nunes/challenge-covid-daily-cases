@@ -1,7 +1,7 @@
 import React from 'react'
 import Plot from 'react-plotly.js'
 
-import IData from '../../Interfaces/IData'
+import IData from '../../interfaces/IData'
 
 const unpack = (data, prop) => data.map(item => item[prop])
 
