@@ -12,21 +12,23 @@ const WorldMap = dynamic(import('../src/components/WorldMap/WorldMap'), {
 
 const Home: NextPage = props => (
   <Container>
-    <DateSlider />
+    <DateSlider dates={props['dates']} />
     <WorldMap covidData={props['covidData']} />
   </Container>
 )
 
 export const getStaticProps: GetStaticProps = async () => {
-  const date = '2021-03-22'
-  const { data: covid_daily_cases, error } = await supabaseClient
+  const date = '2020-05-11'
+
+  const { data: dates } = await supabaseClient
+    .from('dates')
+    .select('*')
+    .order('dates', { ascending: true })
+
+  const { data: covid_daily_cases } = await supabaseClient
     .from('covid_daily_cases')
     .select('*')
     .eq('date', date)
-
-  if (error) {
-    throw new Error(error.message)
-  }
 
   const CovidApiData = new ApiData(covid_daily_cases)
   CovidApiData.extractCountries()
@@ -36,6 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
+      dates,
       covidData
     }
   }
