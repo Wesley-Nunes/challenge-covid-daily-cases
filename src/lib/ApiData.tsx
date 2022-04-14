@@ -1,4 +1,4 @@
-import IData from '../Interfaces/IData'
+import IData from '../interfaces/IData'
 
 class ApiData {
   private countries: string[]

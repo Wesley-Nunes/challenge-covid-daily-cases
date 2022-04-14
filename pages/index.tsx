@@ -1,36 +1,33 @@
 import React from 'react'
-import { NextPage, GetStaticProps } from 'next'
+import { NextPage, GetServerSideProps } from 'next'
 import dynamic from 'next/dynamic'
+import { Container } from '@mui/material'
 
-import supabaseClient from '../lib/supabaseClient'
-import ApiData from '../lib/ApiData'
+import supabaseClient from '../src/lib/supabaseClient'
+import DateSlider from '../src/components/DateSlider/DateSlider'
 
-const WorldMap = dynamic(import('../components/WorldMap/WorldMap'), {
+const WorldMap = dynamic(import('../src/components/WorldMap/WorldMap'), {
   ssr: false
 })
 
-const Home: NextPage = props => <WorldMap covidData={props['covidData']} />
+const Home: NextPage = props => {
+  return (
+    <Container>
+      <DateSlider dates={props['dates']} />
+      <WorldMap />
+    </Container>
+  )
+}
 
-export const getStaticProps: GetStaticProps = async () => {
-  const date = '2021-03-22'
-  const { data: covid_daily_cases, error } = await supabaseClient
-    .from('covid_daily_cases')
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { data: dates } = await supabaseClient
+    .from('dates')
     .select('*')
-    .eq('date', date)
-
-  if (error) {
-    throw new Error(error.message)
-  }
-
-  const CovidApiData = new ApiData(covid_daily_cases)
-  CovidApiData.extractCountries()
-  const countries = CovidApiData.getCountries
-  countries.forEach(country => CovidApiData.clean(country))
-  const covidData = CovidApiData.getCleanData
+    .order('dates', { ascending: true })
 
   return {
     props: {
-      covidData
+      dates
     }
   }
 }
