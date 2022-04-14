@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
 import { Box, Slider } from '@mui/material'
 
+import { useDate } from '../../lib/context/dateContext'
+
 const DateSlider = ({ dates }): JSX.Element => {
   const [value, setValue] = useState<number>(0)
+  const date = Object.values(dates[value])[0]
+  const { changeDate } = useDate()
+  changeDate(date as string)
+
   const handleChange = (event: Event, newValue: number): void => {
     setValue(newValue as number)
   }
-  const valuetext = (value: number): string => {
-    const date = Object.values(dates[value])[0]
+  const valuetext = (): string => {
     const [year, month, day] = (date as string).split('-')
     return `${day}/${month}/${year}`
   }
